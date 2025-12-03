@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnAI - AI Tutor Student</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="logo">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>LearnAI</span>
+    </div>
+
+    <nav class="nav-links">
+        
+        <!-- LEFT GROUP -->
+        <div class="nav-group-left">
+            <a href="#">E-Book</a>
+            <a href="#">Q&A Collection</a>
+            <a href="#" class="active">Quick Test</a>
+        </div>
+
+        <!-- CENTER GIF -->
+        <img src="AZrGCZofPOHWvW5YM-NcIA-AZrGCZo-unscreen (1).gif" class="nav-gif">
+
+        <!-- RIGHT GROUP -->
+        <div class="nav-group-right">
+            <a href="#">Study Material</a>
+            <a class="highlight" href="#">Teacher Access</a>
+        </div>
+
+    </nav>
+
+    <div class="user-info">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <i class="fa-regular fa-bell"></i>
+        <div class="profile">
+            <img src="image.png">
+            <span>Masud A.</span>
+            <small>Student</small>
+        </div>
+    </div>
+</header>
+
+
+    <main class="ai-tutor-container">
+        <div class="welcome-box">
+            <div class="floating-orb"></div>
+
+            <div class="welcome-text-area">
+                <h1>Welcome to AI Tutor</h1>
+                <p>Get personalized help with your learning</p>
+            </div>
+
+            <div class="interaction-cards">
+                <div class="card">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>Explain today's lesson</span>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span>Give example problems</span>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span>Summarize key concepts</span>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-question"></i>
+                    <span>Quiz me on this topic</span>
+                </div>
+            </div>
+
+            <div class="input-area">
+                <div class="text-input-wrapper">
+                    <textarea class="prompt-input" placeholder="|Write here"></textarea>
+                </div>
+            </div>
+
+            <div class="external-controls">
+                <div class="icon-group">
+                    <i class="fa-solid fa-paperclip attachment-icon"></i>
+                    <i class="fa-solid fa-microphone mic-icon"></i>
+                </div>
+
+                <div class="chapter-selection-container">
+                    <select class="chapter-select">
+                        <option value="" disabled selected>Select Chapter...</option>
+                        <option value="ch1">Chapter 1: E-Book Review</option>
+                        <option value="ch2">Chapter 2: Q&A Practice</option>
+                        <option value="ch3">Chapter 3: Quick Test Prep</option>
+                    </select>
+                    <i class="fa-solid fa-caret-down select-arrow"></i>
+                </div>
+                <button class="send-button">
+                    <i class="fa-solid fa-arrow-up"></i>
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

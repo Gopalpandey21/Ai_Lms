@@ -1,0 +1,127 @@
+:root {
+    --primary-color: #78b7f7;
+    --text-color: #222;
+    --dark-gray: #555;
+    --border-color: #e0e0e0;
+    --bg-gradient-start: #ffffff;
+    --bg-gradient-end: #d3e6fc;
+
+    --container-bg: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+
+    background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* --- Login Container --- */
+.login-container {
+    background-color: var(--container-bg);
+    padding: 40px;
+    border-radius: 12px;
+
+    box-shadow: 0 10px 30px var(--shadow-color);
+    width: 400px;
+    max-width: 90%;
+    text-align: center;
+}
+
+.welcome-text {
+    font-size: 1.8em;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: var(--text-color);
+    display: flex;
+}
+
+/* --- Form Elements --- */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 0.9em;
+    color: var(--dark-gray);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(120, 183, 247, 0.2);
+}
+
+.form-group input::placeholder {
+    color: #b0b0b0;
+}
+
+/* --- Button --- */
+.login-button {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: var(--primary-color);
+    /* Primary blue button */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.2s;
+}
+
+.login-button:hover {
+    background-color: #5d98e8;
+}
+
+
+.forgot-password-wrapper {
+
+    text-align: right;
+    margin-top: 25px;
+}
+
+.forgot-password {
+    font-size: 0.9em;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: text-decoration 0.2s;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}

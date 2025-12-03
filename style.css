@@ -1,0 +1,335 @@
+:root {
+    --primary-color: #78b7f7;
+    --text-color: #222;
+    --light-gray: #f0f0f0;
+    --dark-gray: #555;
+    --bg-light: #dcd5cc;
+    --bg-gradient-start: #ffffff;
+    --bg-gradient-end: #d3e6fc;
+    --card-bg: #fff;
+    --border-color: #e0e0e0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    color: var(--text-color);
+    min-height: 100vh;
+}
+
+/* ---------------- NAVBAR ---------------- */
+
+/* NAVIGATION BASE */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+.logo {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #000;
+    display: flex;
+    align-items: center;
+}
+
+.logo i {
+    color: var(--primary-color);
+    margin-right: 5px;
+}
+.nav-links {
+    height: 45px;
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* LEFT SIDE GRADIENT */
+.nav-group-left {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-right: 5px;
+    background: linear-gradient(
+        to right,
+        rgba(211, 230, 252, 0.7) 0%,
+        rgba(211, 230, 252, 0) 100%
+    );
+}
+
+/* RIGHT SIDE GRADIENT */
+.nav-group-right {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-left: 5px;
+    background: linear-gradient(
+        to right,
+        rgba(211, 230, 252, 0) 0%,
+        rgba(211, 230, 252, 0.7) 100%
+    );
+}
+
+/* GIF IN MIDDLE */
+.nav-gif {
+    width: 100px;
+    height: 45px;
+    object-fit: contain;
+    margin: 0 4px;
+}
+
+/* LINKS */
+.nav-links a {
+    text-decoration: none;
+    color: var(--dark-gray);
+    padding: 4px 15px;
+    margin: 0 3px;
+    border-radius: 10px;
+    transition: 0.2s;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.nav-links a.active {
+text-decoration: underline;
+  text-underline-offset: 4px; 
+  font-weight: 800; 
+}
+
+/* Highlight Link (Teacher Access) */
+/* .highlight {
+    background: #ffecb3;
+    color: #333 !important;
+    border-radius: 8px;
+} */
+/* add this end  */
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-info i {
+    font-size: 1.2em;
+    color: var(--dark-gray);
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.profile img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.profile span {
+    font-weight: 600;
+}
+
+.profile small {
+    color: var(--dark-gray);
+    font-size: 0.8em;
+}
+
+/* ---------------- MAIN WRAPPER ---------------- */
+
+.ai-tutor-container {
+    max-width: 100vw;
+   margin: 15px 0 0 auto;
+    padding: 0 20px;
+}
+
+/* ---------------- WELCOME BOX ---------------- */
+
+.welcome-box {
+    text-align: center;
+    padding: 40px 20px 30px;
+    border-radius: 20px;
+    background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.floating-orb {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    /* transform: translateX(-50%); */
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #cce5ff, #c3e2ff, #a9c7ff);
+    box-shadow: 0 0 20px rgba(120, 183, 247, 0.5);
+}
+
+.welcome-text-area {
+    padding-top: 10%;
+    margin-bottom: 30px;
+}
+
+.welcome-box h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+.welcome-box p {
+    color: var(--dark-gray);
+    margin-top: 5px;
+    font-size: 0.9em;
+}
+
+/* ---------------- CARDS ---------------- */
+
+.interaction-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    max-width: 990px;
+    margin: 0 auto 25px;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card i {
+    font-size: 1.5em;
+    background-color: #cce4ffcc;
+    color: var(--primary-color);
+    padding: 10px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+/* ---------------- INPUT AREA ---------------- */
+
+.input-area {
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 10px 15px;
+    display: flex;
+    align-items: flex-end;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.text-input-wrapper {
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-end;
+}
+
+.prompt-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    min-height: 30px;
+    font-size: 1em;
+    background: transparent;
+}
+
+.prompt-input::placeholder {
+    color: #888;
+}
+
+/* ---------------- NEW SECTION UNDER INPUT AREA ---------------- */
+
+.external-controls {
+    margin: 20px auto 0;
+    max-width: 700px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icon-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon-group i {
+    font-size: 1.2em;
+    color: var(--dark-gray);
+    cursor: pointer;
+}
+
+/* ----- chapter dropdown ----- */
+
+.chapter-selection-container {
+    position: relative;
+}
+
+.chapter-select {
+    padding: 8px 30px 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: white;
+    font-size: 0.95em;
+    cursor: pointer;
+    appearance: none;
+    width: 35vw;
+}
+
+.select-arrow {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--dark-gray);
+}
+
+/* ----- send button ----- */
+
+.send-button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.send-button i {
+    color: white;
+}
+
+
+
