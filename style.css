@@ -32,6 +32,7 @@ body {
     align-items: center;
     padding: 15px 30px;
 }
+
 .logo {
     font-size: 1.4em;
     font-weight: 700;
@@ -44,12 +45,15 @@ body {
     color: var(--primary-color);
     margin-right: 5px;
 }
+
 .nav-links {
     height: 45px;
     display: flex;
     align-items: center;
     border-radius: 6px;
-    overflow: hidden;
+    overflow: visible;
+    position: relative;
+
 }
 
 /* LEFT SIDE GRADIENT */
@@ -58,11 +62,9 @@ body {
     align-items: center;
     height: 100%;
     padding-right: 5px;
-    background: linear-gradient(
-        to right,
-        rgba(211, 230, 252, 0.7) 0%,
-        rgba(211, 230, 252, 0) 100%
-    );
+    background: linear-gradient(to right,
+            rgba(211, 230, 252, 0.7) 0%,
+            rgba(211, 230, 252, 0) 100%);
 }
 
 /* RIGHT SIDE GRADIENT */
@@ -71,11 +73,9 @@ body {
     align-items: center;
     height: 100%;
     padding-left: 5px;
-    background: linear-gradient(
-        to right,
-        rgba(211, 230, 252, 0) 0%,
-        rgba(211, 230, 252, 0.7) 100%
-    );
+    background: linear-gradient(to right,
+            rgba(211, 230, 252, 0) 0%,
+            rgba(211, 230, 252, 0.7) 100%);
 }
 
 /* GIF IN MIDDLE */
@@ -98,10 +98,23 @@ body {
     font-weight: 500;
 }
 
-.nav-links a.active {
-text-decoration: underline;
-  text-underline-offset: 4px; 
-  font-weight: 800; 
+/* .nav-links a.active {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    font-weight: 800;
+} */
+
+.underline {
+    position: absolute;
+    bottom: 13px;
+    height: 1px;
+    background: #000;
+    border-radius: 2px;
+    width: 0;
+    /* JS will control width */
+    left: 0;
+    /* JS will control left */
+    transition: all 1s ease;
 }
 
 /* Highlight Link (Teacher Access) */
@@ -148,7 +161,7 @@ text-decoration: underline;
 
 .ai-tutor-container {
     max-width: 100vw;
-   margin: 15px 0 0 auto;
+    margin: 15px 0 0 auto;
     padding: 0 20px;
 }
 
@@ -333,3 +346,316 @@ text-decoration: underline;
 
 
 
+/* e-book  */
+
+/* E-Book Page Styling */
+.welcome-text-area h1 {
+    font-size: 2.2em;
+    margin-bottom: 8px;
+}
+
+.welcome-text-area p {
+    color: #555;
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+/* Interaction cards for E-book page */
+.interaction-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card i {
+    font-size: 1.5em;
+    background-color: #cce4ffcc;
+    color: #78b7f7;
+    padding: 10px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Book list styling */
+#book-list {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+}
+
+#book-list h3 {
+    margin-bottom: 10px;
+    color: #222;
+}
+
+#book-list ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+#book-list li {
+    margin-bottom: 5px;
+    color: #555;
+}
+
+
+/* Q&A  */
+
+/* Q&A Collection Page Styling */
+.welcome-text-area h1 {
+    font-size: 2.2em;
+    margin-bottom: 8px;
+}
+
+.welcome-text-area p {
+    color: #555;
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+/* Interaction cards for Q&A page */
+.interaction-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card i {
+    font-size: 1.5em;
+    background-color: #cce4ffcc;
+    color: #78b7f7;
+    padding: 10px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Q&A list styling */
+#qa-list {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+}
+
+#qa-list h3 {
+    margin-bottom: 10px;
+    color: #222;
+}
+
+#qa-list ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+#qa-list li {
+    margin-bottom: 5px;
+    color: #555;
+}
+
+
+/* ---------------Quick - test ----------- */
+/* Quick Test Page Styling */
+.welcome-text-area h1 {
+    font-size: 2.2em;
+    margin-bottom: 8px;
+}
+
+.welcome-text-area p {
+    color: #555;
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+/* Interaction cards */
+.interaction-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card i {
+    font-size: 1.5em;
+    background-color: #cce4ffcc;
+    color: #78b7f7;
+    padding: 10px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Quick Test list styling */
+#quicktest-list {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+}
+
+#quicktest-list h3 {
+    margin-bottom: 10px;
+    color: #222;
+}
+
+#quicktest-list ol {
+    padding-left: 20px;
+}
+
+#quicktest-list li {
+    margin-bottom: 8px;
+    color: #555;
+}
+
+
+/*--------------- Study meterial ------------ */
+/* Study Material Page Styling */
+.welcome-text-area h1 {
+    font-size: 2.2em;
+    margin-bottom: 8px;
+}
+
+.welcome-text-area p {
+    color: #555;
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+/* Interaction cards */
+.interaction-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card i {
+    font-size: 1.5em;
+    background-color: #cce4ffcc;
+    color: #78b7f7;
+    padding: 10px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Study list styling */
+#study-list {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0px 19px 0px 23px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+}
+
+#study-list h3 {
+    margin-bottom: 10px;
+    color: #222;
+}
+
+#study-list ul {
+    padding-left: 20px;
+}
+
+#study-list li {
+    margin-bottom: 8px;
+    color: #555;
+}
+ /* ----------------home .html ---------------- */
+ /* blinking highlight animation */
+.blink {
+    animation: blink-animation 0.6s ease-in-out 2;
+}
+
+@keyframes blink-animation {
+    0% { border-color: red; }
+    50% { border-color: transparent; }
+    100% { border-color: red; }
+}
+.chapter-select {
+    border: 1px solid #ccc;
+    transition: border-color 0.3s;
+}
