@@ -1,35 +1,86 @@
-<!-- pages/study.html -->
-<div class="welcome-text-area">
-    <h1>Study Material</h1>
-    <p>Access all chapter-wise notes and resources</p>
-</div>
+<div class=" study-material-spa">
 
-<div class="interaction-cards">
-    <div class="card">
-        <i class="fa-solid fa-book"></i>
-        <span>Chapter Notes</span>
-    </div>
-    <div class="card">
-        <i class="fa-solid fa-file-lines"></i>
-        <span>PDF Resources</span>
-    </div>
-    <div class="card">
-        <i class="fa-solid fa-video"></i>
-        <span>Video Tutorials</span>
-    </div>
-    <div class="card">
-        <i class="fa-solid fa-download"></i>
-        <span>Download Material</span>
-    </div>
-</div>
+    <div id="chapter-list-screen" class="study-screen active">
+        <h1 class="screen-title">Chapters List</h1>
+        <p class="instruction-text">
+            <input type="checkbox" checked disabled> Required chapters and Click Next
+        </p>
 
-<div id="study-list">
-    <h3>Available Chapters:</h3>
-    <ul>
-        <li>Chapter 1: Introduction to AI</li>
-        <li>Chapter 2: Data Structures & Algorithms</li>
-        <li>Chapter 3: Web Development Basics</li>
-        <li>Chapter 4: Python Programming</li>
-        <li>Chapter 5: Database Management</li>
-    </ul>
+        <div class="chapters-grid">
+            <div class="chapter-card">
+                <input type="checkbox"> <span>1.0 Things around me</span>
+            </div>
+            <div class="chapter-card">
+                <input type="checkbox"> <span>3.0 Plants - our Green Friends</span>
+            </div>
+            <div class="chapter-card">
+                <input type="checkbox"> <span>5.0 Uses of Animals</span>
+            </div>
+            <div class="chapter-card">
+                <input type="checkbox"> <span>7.0 Food for health</span>
+            </div>
+            <div class="chapter-card">
+                <input type="checkbox"> <span>9.0 Housing and Clothing</span>
+            </div>
+            <div class="chapter-card">
+                <input type="checkbox"> <span>11.0 WATER</span>
+            </div>
+            <div class="chapter-card">
+                <input type="checkbox"> <span>13.0 GOING TO SPACE</span>
+            </div>
+
+            <div class="chapter-card">
+                <input type="checkbox"> <span>2.0 The world of plants</span>
+            </div>
+            <div class="chapter-card">
+                <input type="checkbox"> <span>4.0 The world of animals</span>
+            </div>
+            <div class="chapter-card">
+                <input type="checkbox"> <span>6.0 Bones and muscles</span>
+            </div>
+            <div class="chapter-card">
+                <input type="checkbox"> <span>8.0 Safety First</span>
+            </div>
+            <div class="chapter-card">
+                <input type="checkbox"> <span>10.0 Air</span>
+            </div>
+            <div class="chapter-card">
+                <input type="checkbox"> <span>12.0 LIGHT AND SHADOWS</span>
+            </div>
+        </div>
+
+        <div class="action-footer">
+            <button class="btn-secondary">Generate Paper Manually</button>
+            <button class="btn-primary" onclick="showReader()">Generate with AI</button>
+        </div>
+    </div>
+
+    <div id="reader-screen" class="study-screen">
+        <div class="ebook-layout">
+            <aside class="chapters-sidebar">
+                <h3 class="sidebar-title">Chapters</h3>
+                <ul class="chapter-list">
+                    <li class="chapter-item active">1.0 Things around me</li>
+                    <li class="chapter-item">2.0 The world of plants</li>
+                    <li class="chapter-item">3.0 Plants - our green friends</li>
+                    <li class="chapter-item">4.0 The world of animals</li>
+                    <li class="chapter-item">5.0 Uses of Animals</li>
+                </ul>
+            </aside>
+
+            <section class="ebook-reader-frame">
+                <div class="reader-inner-box">
+                    <div class="reader-header">
+                        <span class="ebook-title">E-book Title: Modern Biology</span>
+                    </div>
+                    <div class="reader-display-area">
+                        <div class="reading-content">
+                            <h2>Things Around Me</h2>
+                            <p>Our environment is composed of living and non-living things...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
 </div>

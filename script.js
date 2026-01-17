@@ -14,7 +14,8 @@ function loadPage(page) {
         ebook: "pages/E-book.html",
         qa: "pages/Q&A.html",
         quicktest: "pages/Quick-Test.html",
-        study: "pages/Study-Material.html"
+        study: "pages/Study-Material.html",
+        teacher: "teacher.html"
     };
 
     const url = pageMap[page];
@@ -24,30 +25,23 @@ function loadPage(page) {
         .then(res => res.text())
         .then(html => {
             welcomeBox.innerHTML = html;
-
-            // Initialize input & chapter select after content is loaded
-            initChapterValidation();
+            
+            // Re-initialize specific scripts based on which page loaded
+            if (page === "home") {
+                initChapterValidation();
+            } else if (page === "ebook") {
+                initSidebarToggle(); // Initialize sidebar logic for E-book
+            }
         })
         .catch(err => {
             welcomeBox.innerHTML = `<h2>Error loading page</h2><p>${err.message}</p>`;
         });
 }
 
-// Set active link and move underline
+// Set active link
 function setActiveLink(el) {
     navLinks.forEach(l => l.classList.remove("active"));
     el.classList.add("active");
-    moveUnderline(el);
-}
-
-// Move underline below active link
-function moveUnderline(el) {
-    const rect = el.getBoundingClientRect();
-    const navRect = document.querySelector(".nav-links").getBoundingClientRect();
-    underline.style.width = rect.width + "px";
-    underline.style.left = (rect.left - navRect.left) + "px";
-    const bottomPos = rect.bottom - navRect.top; 
-    underline.style.top = bottomPos + "px";
 }
 
 // Click event for nav links
@@ -69,51 +63,10 @@ window.addEventListener("load", () => {
     }
 });
 
-// --- Function: Validate chapter selection ---
-// function initChapterValidation() {
-//     const promptInput = welcomeBox.querySelector(".prompt-input");
-//     const chapterSelect = welcomeBox.querySelector(".chapter-select");
-//     const sendButton = welcomeBox.querySelector(".send-button");
 
-//     if (!promptInput || !chapterSelect) return;
+// --- FEATURE SPECIFIC FUNCTIONS ---
 
-//     // Disable input initially
-//     promptInput.disabled = true;
-
-//     // Enable typing when chapter selected
-//     chapterSelect.addEventListener("change", () => {
-//         if (chapterSelect.value) {
-//             promptInput.disabled = false;
-//             promptInput.focus(); // optional: auto-focus
-//         }
-//     });
-
-//     // If user clicks send without selecting chapter
-//     if (sendButton) {
-//         sendButton.addEventListener("click", () => {
-//             if (!chapterSelect.value) {
-//                 blinkChapterDropdown(chapterSelect);
-//                 promptInput.disabled = true;
-//             }
-//         });
-//     }
-
-//     // If user tries to type without selecting chapter
-//     promptInput.addEventListener("mousedown", (e) => {
-//         if (!chapterSelect.value) {
-//             e.preventDefault(); // prevent typing
-//             blinkChapterDropdown(chapterSelect);
-//         }
-//     });
-
-//     promptInput.addEventListener("focus", () => {
-//         if (!chapterSelect.value) {
-//             promptInput.blur(); // remove focus
-//             blinkChapterDropdown(chapterSelect);
-//         }
-//     });
-// }
-
+// 1. Home Page: Chapter Dropdown Validation
 function initChapterValidation() {
     const promptInput = welcomeBox.querySelector(".prompt-input");
     const chapterSelect = welcomeBox.querySelector(".chapter-select");
@@ -151,7 +104,6 @@ function initChapterValidation() {
     });
 }
 
-// Blink function
 function blinkChapterDropdown(el) {
     el.classList.add("blink");
     setTimeout(() => {
@@ -160,10 +112,40 @@ function blinkChapterDropdown(el) {
 }
 
 
-// Blink helper function
-function blinkChapterDropdown(el) {
-    el.classList.add("blink");
-    setTimeout(() => {
-        el.classList.remove("blink");
-    }, 1200);
+// 2. Study Material Page: Switch to Reader View
+function showReader() {
+    const chapterList = document.getElementById('chapter-list-screen');
+    const readerScreen = document.getElementById('reader-screen');
+    
+    if (chapterList) chapterList.classList.remove('active');
+    if (readerScreen) readerScreen.classList.add('active');
+}
+
+
+// 3. E-book Page: Sidebar Toggle Logic
+function initSidebarToggle() {
+    const toggleBtn = document.getElementById("sidebarToggle");
+    const sidebar = document.getElementById("chapterSidebar");
+    const layout = document.querySelector(".ebook-layout");
+    
+    if (toggleBtn && sidebar && layout) {
+        const icon = toggleBtn.querySelector("i");
+        
+        toggleBtn.addEventListener("click", () => {
+            // 1. Toggle Sidebar Visibility
+            sidebar.classList.toggle("collapsed");
+            
+            // 2. Toggle Layout State (moves the button)
+            layout.classList.toggle("sidebar-closed");
+
+            // 3. Rotate Icon
+            if (sidebar.classList.contains("collapsed")) {
+                icon.classList.remove("fa-chevron-left");
+                icon.classList.add("fa-chevron-right");
+            } else {
+                icon.classList.remove("fa-chevron-right");
+                icon.classList.add("fa-chevron-left");
+            }
+        });
+    }
 }

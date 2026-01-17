@@ -1,34 +1,42 @@
-<!-- pages/E-book.html -->
-<div class="welcome-text-area">
-    <h1>E-Book Section</h1>
-    <p>Read and explore study material</p>
-</div>
+<div class="ebook-spa-container">
+    <div class="ebook-layout">
+        
+        <aside class="chapters-sidebar" id="chapterSidebar">
+            <h3 class="sidebar-title">Chapters</h3>
+            <ul class="chapter-list">
+                <li class="chapter-item">1. Homelander and the princess</li>
+                <li class="chapter-item">2. The World of Plants</li>
+                <li class="chapter-item">3. Quantum Physics Basics</li>
+                <li class="chapter-item">4. Organic Chemistry</li>
+                <li class="chapter-item">5. Renaissance History</li>
+                <li class="chapter-item">6. Advanced Calculus</li>
+                <li class="chapter-item">7. Artificial Intelligence</li>
+                <li class="chapter-item">8. Machine Learning</li>
+                <li class="chapter-item">9. Data Structures</li>
+                <li class="chapter-item">10. Algorithms</li>
+                <li class="chapter-item">10. Algorithms</li>
+                <li class="chapter-item">10. Algorithms</li>
+                <li class="chapter-item">10. Algorithms</li>
+            </ul>
+        </aside>
 
-<div class="interaction-cards">
-    <div class="card">
-        <i class="fa-solid fa-book-open"></i>
-        <span>Chapter Summaries</span>
-    </div>
-    <div class="card">
-        <i class="fa-solid fa-download"></i>
-        <span>Download PDF</span>
-    </div>
-    <div class="card">
-        <i class="fa-solid fa-video"></i>
-        <span>Video Tutorials</span>
-    </div>
-    <div class="card">
-        <i class="fa-solid fa-lightbulb"></i>
-        <span>Key Concepts</span>
-    </div>
-</div>
+        <div id="sidebarToggle" class="sidebar-toggler">
+            <i class="fa-solid fa-chevron-left"></i>
+        </div>
 
-<div id="book-list">
-    <h3>Available Books:</h3>
-    <ul>
-        <li>Python for 11th Class</li>
-        <li>Mathematics XI</li>
-        <li>Physics XI</li>
-        <li>Chemistry XI</li>
-    </ul>
+        <section class="ebook-reader-frame">
+            <div class="reader-inner-box">
+                <div class="reader-header">
+                    <span class="ebook-title">E-book Title: Modern Biology</span>
+                </div>
+                
+                <div class="reader-display-area">
+                    <div class="placeholder-content">
+                        <i class="fa-solid fa-book-open-reader"></i>
+                        <p>Select a chapter to start reading...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </div>

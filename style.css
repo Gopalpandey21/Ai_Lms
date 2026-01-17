@@ -21,6 +21,7 @@ body {
     background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
     color: var(--text-color);
     min-height: 100vh;
+    
 }
 
 /* ---------------- NAVBAR ---------------- */
@@ -31,6 +32,9 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
+    position: sticky;
+    z-index: 100;
+    top: 0;
 }
 
 .logo {
@@ -53,7 +57,7 @@ body {
     border-radius: 6px;
     overflow: visible;
     position: relative;
-
+    gap: 0;
 }
 
 /* LEFT SIDE GRADIENT */
@@ -65,6 +69,7 @@ body {
     background: linear-gradient(to right,
             rgba(211, 230, 252, 0.7) 0%,
             rgba(211, 230, 252, 0) 100%);
+    border-radius: 6px;
 }
 
 /* RIGHT SIDE GRADIENT */
@@ -76,55 +81,76 @@ body {
     background: linear-gradient(to right,
             rgba(211, 230, 252, 0) 0%,
             rgba(211, 230, 252, 0.7) 100%);
+    border-radius: 6px;
 }
 
 /* GIF IN MIDDLE */
 .nav-gif {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 4px;
+    padding: 4px 8px;
+    transition: transform 0.3s ease, opacity 0.2s ease;
+}
+
+.nav-gif img {
     width: 100px;
     height: 45px;
     object-fit: contain;
-    margin: 0 4px;
+    display: block;
+}
+
+.nav-gif:hover {
+    transform: scale(1.05);
+}
+
+.nav-gif.active {
+    transform: scale(1.08);
 }
 
 /* LINKS */
 .nav-links a {
     text-decoration: none;
     color: var(--dark-gray);
-    padding: 4px 15px;
+    padding: 8px 15px;
     margin: 0 3px;
     border-radius: 10px;
-    transition: 0.2s;
+    transition: all 0.2s ease;
     font-size: 0.9em;
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    white-space: nowrap;
+    position: relative;
 }
 
-/* .nav-links a.active {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    font-weight: 800;
-} */
+.nav-links a:hover {
+    color: var(--text-color);
+    background: rgba(120, 183, 247, 0.1);
+}
 
-.underline {
+.nav-links a.active {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* UNDERLINE */
+/* .underline {
     position: absolute;
-    bottom: 13px;
-    height: 1px;
-    background: #000;
+    height: 3px;
+    background: var(--text-color);
     border-radius: 2px;
     width: 0;
-    /* JS will control width */
     left: 0;
-    /* JS will control left */
-    transition: all 1s ease;
-}
-
-/* Highlight Link (Teacher Access) */
-/* .highlight {
-    background: #ffecb3;
-    color: #333 !important;
-    border-radius: 8px;
+    bottom: -2px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
 } */
-/* add this end  */
 
+/* USER INFO */
 .user-info {
     display: flex;
     align-items: center;
@@ -157,6 +183,15 @@ body {
     font-size: 0.8em;
 }
 
+/* BLINK ANIMATION */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.blink {
+    animation: blink 0.4s ease-in-out 3;
+}
 /* ---------------- MAIN WRAPPER ---------------- */
 
 .ai-tutor-container {
@@ -180,8 +215,7 @@ body {
 .floating-orb {
     position: absolute;
     top: 50px;
-    left: 50%;
-    /* transform: translateX(-50%); */
+    left: 47%;
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -190,7 +224,7 @@ body {
 }
 
 .welcome-text-area {
-    padding-top: 10%;
+    padding-top: 7%;
     margin-bottom: 30px;
 }
 
@@ -346,9 +380,9 @@ body {
 
 
 
-/* e-book  */
+/* ----- Page-specific styles (consolidated) ----- */
 
-/* E-Book Page Styling */
+/* Welcome area */
 .welcome-text-area h1 {
     font-size: 2.2em;
     margin-bottom: 8px;
@@ -360,7 +394,7 @@ body {
     margin-bottom: 20px;
 }
 
-/* Interaction cards for E-book page */
+/* Interaction cards (used across pages: home, ebook, qa, quicktest, study) */
 .interaction-cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -368,7 +402,7 @@ body {
     margin-bottom: 20px;
 }
 
-.card {
+/* .card {
     background-color: rgba(255, 255, 255, 0.15);
     padding: 20px;
     border-radius: 15px;
@@ -379,7 +413,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
+} */
 
 .card i {
     font-size: 1.5em;
@@ -395,8 +429,11 @@ body {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Book list styling */
-#book-list {
+/* Shared list panels for pages */
+#book-list,
+#qa-list,
+#quicktest-list,
+#study-list {
     text-align: left;
     max-width: 600px;
     margin: 0 auto;
@@ -406,256 +443,336 @@ body {
     border: 1px solid #ddd;
 }
 
-#book-list h3 {
+#book-list h3,
+#qa-list h3,
+#quicktest-list h3,
+#study-list h3 {
     margin-bottom: 10px;
     color: #222;
 }
 
-#book-list ul {
+#book-list ul,
+#qa-list ul,
+#study-list ul {
     list-style-type: disc;
     padding-left: 20px;
-}
-
-#book-list li {
-    margin-bottom: 5px;
-    color: #555;
-}
-
-
-/* Q&A  */
-
-/* Q&A Collection Page Styling */
-.welcome-text-area h1 {
-    font-size: 2.2em;
-    margin-bottom: 8px;
-}
-
-.welcome-text-area p {
-    color: #555;
-    font-size: 1em;
-    margin-bottom: 20px;
-}
-
-/* Interaction cards for Q&A page */
-.interaction-cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.card {
-    background-color: rgba(255, 255, 255, 0.15);
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.card i {
-    font-size: 1.5em;
-    background-color: #cce4ffcc;
-    color: #78b7f7;
-    padding: 10px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
-
-.card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Q&A list styling */
-#qa-list {
-    text-align: left;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 15px;
-    background: #f9f9f9;
-    border-radius: 12px;
-    border: 1px solid #ddd;
-}
-
-#qa-list h3 {
-    margin-bottom: 10px;
-    color: #222;
-}
-
-#qa-list ul {
-    list-style-type: disc;
-    padding-left: 20px;
-}
-
-#qa-list li {
-    margin-bottom: 5px;
-    color: #555;
-}
-
-
-/* ---------------Quick - test ----------- */
-/* Quick Test Page Styling */
-.welcome-text-area h1 {
-    font-size: 2.2em;
-    margin-bottom: 8px;
-}
-
-.welcome-text-area p {
-    color: #555;
-    font-size: 1em;
-    margin-bottom: 20px;
-}
-
-/* Interaction cards */
-.interaction-cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.card {
-    background-color: rgba(255, 255, 255, 0.15);
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.card i {
-    font-size: 1.5em;
-    background-color: #cce4ffcc;
-    color: #78b7f7;
-    padding: 10px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
-
-.card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Quick Test list styling */
-#quicktest-list {
-    text-align: left;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 15px;
-    background: #f9f9f9;
-    border-radius: 12px;
-    border: 1px solid #ddd;
-}
-
-#quicktest-list h3 {
-    margin-bottom: 10px;
-    color: #222;
 }
 
 #quicktest-list ol {
     padding-left: 20px;
 }
 
-#quicktest-list li {
-    margin-bottom: 8px;
-    color: #555;
-}
-
-
-/*--------------- Study meterial ------------ */
-/* Study Material Page Styling */
-.welcome-text-area h1 {
-    font-size: 2.2em;
-    margin-bottom: 8px;
-}
-
-.welcome-text-area p {
-    color: #555;
-    font-size: 1em;
-    margin-bottom: 20px;
-}
-
-/* Interaction cards */
-.interaction-cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.card {
-    background-color: rgba(255, 255, 255, 0.15);
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.card i {
-    font-size: 1.5em;
-    background-color: #cce4ffcc;
-    color: #78b7f7;
-    padding: 10px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
-
-.card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-}
-
-/* Study list styling */
-#study-list {
-    text-align: left;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 0px 19px 0px 23px;
-    background: #f9f9f9;
-    border-radius: 12px;
-    border: 1px solid #ddd;
-}
-
-#study-list h3 {
-    margin-bottom: 10px;
-    color: #222;
-}
-
-#study-list ul {
-    padding-left: 20px;
-}
-
+#book-list li,
+#qa-list li,
+#quicktest-list li,
 #study-list li {
     margin-bottom: 8px;
     color: #555;
 }
- /* ----------------home .html ---------------- */
- /* blinking highlight animation */
-.blink {
-    animation: blink-animation 0.6s ease-in-out 2;
+
+
+
+
+/* Container ebook for SPA content */
+
+
+
+.ebook-spa-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 550px;
+    padding: 30px !important;
 }
 
-@keyframes blink-animation {
-    0% { border-color: red; }
-    50% { border-color: transparent; }
-    100% { border-color: red; }
+.ebook-layout {
+   display: flex;
+    width: 100%;
+    height: 100%;
+    gap: 0; /* Remove gap so button touches sidebar */
+    margin-top: 20px;
+    text-align: left;
+    position: relative;
 }
-.chapter-select {
-    border: 1px solid #ccc;
-    transition: border-color 0.3s;
+
+/* SIDEBAR: Chapters */
+.chapters-sidebar {
+    width: 280px; 
+    flex: 0 0 280px; /* Don't grow, don't shrink, fixed base */
+    
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 15px 0 0 15px; /* Rounded Left corners only */
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-right: none; /* Remove right border to merge with button area */
+    max-height: 500px;
+    display: flex;
+    flex-direction: column;
+    
+    /* Smooth Animation */
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden;
+    opacity: 1;
 }
+
+/* 2. Create the "Collapsed" class (Hidden State) */
+.chapters-sidebar.collapsed {
+   width: 0;
+    flex: 0 0 0;
+    padding: 20px 0; /* Remove horizontal padding */
+    opacity: 0;
+    border-width: 0;
+}
+.reader-header {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between button and title */
+}
+
+.sidebar-title {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text-color);
+    flex-shrink: 0;
+}
+
+.chapter-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    flex-grow: 1;
+    scrollbar-width: none;
+    /* scrollbar-color: var(--border-color) transparent; */
+}
+
+
+.chapter-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chapter-item {
+    padding: 12px 10px;
+    /* margin-bottom: 3px; */
+    font-size: 0.9em;
+    color: var(--dark-gray);
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chapter-item:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateX(5px);
+}
+
+.sidebar-toggler {
+    position: absolute;
+    left: 290px; /* Matches the Sidebar Width */
+    top: 50%;
+    transform: translateY(-50%);
+    
+    width: 11px;
+    height: 60px;
+    background: var(--primary-color);
+    color: white;
+    
+    /* Shape it like a tab */
+    border-radius: 0 10px 10px 0; 
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9em;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    z-index: 10;
+    
+    /* Animation to follow sidebar */
+    transition: left 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.sidebar-toggler:hover {
+    background: #5d98e8; /* Slightly darker on hover */
+}
+
+/* When sidebar is collapsed, move button to left 0 */
+.ebook-layout.sidebar-closed .sidebar-toggler {
+    left: 0;
+}
+
+/* READER FRAME: Right Side */
+.ebook-reader-frame {
+    flex: 1; /* Takes remaining space */
+    background: white;
+    border-radius: 0 15px 15px 15px; /* Adjust radius to look connected */
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-left: 10px; /* Small gap between button and reader */
+    transition: margin-left 0.4s;
+}
+/* Adjust reader margin when closed so it doesn't hit the button */
+.ebook-layout.sidebar-closed .ebook-reader-frame {
+    margin-left: 30px; 
+    border-radius: 15px; /* Full rounded when alone */
+}
+
+
+.reader-inner-box {
+    height: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.reader-header {
+    padding: 15px 20px;
+    background: #f8fbff;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.ebook-title {
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--dark-gray);
+    font-family: 'Comic Neue', cursive;
+    /* Optional: matching the sketch font */
+}
+
+.reader-display-area {
+    flex: 1;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Sketch hatching effect for the reader background */
+.reader-display-area::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(-45deg,
+            transparent,
+            transparent 15px,
+            rgba(120, 183, 247, 0.02) 15px,
+            rgba(120, 183, 247, 0.02) 16px);
+    pointer-events: none;
+}
+
+.placeholder-content {
+    text-align: center;
+    color: #b0b0b0;
+    z-index: 1;
+}
+
+.placeholder-content i {
+    font-size: 3em;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    opacity: 0.5;
+}
+
+
+
+
+/* --- Study Material html Transitions --- */
+.study-screen {
+    display: none;
+    width: 100%;
+}
+.study-screen.active {
+    display: block;
+}
+
+/* --- Chapter Grid Layout --- */
+.chapters-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+.chapter-card {
+    background: white;
+    border: 1px solid var(--border-color);
+    padding: 15px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    transition: 0.3s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.chapter-card:hover {
+    border-color: var(--primary-color);
+    background: #f8fbff;
+}
+
+.chapter-card input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.chapter-card span {
+    font-size: 0.9em;
+    color: var(--dark-gray);
+    font-weight: 500;
+}
+
+/* --- Buttons --- */
+.action-footer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    transition: 0.2s;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--dark-gray);
+}
+
+.btn-secondary:hover {
+    background: #f5f5f5;
+}
+
+/* --- Reader View Adjustments --- */
+.reading-content {
+    padding: 40px;
+    text-align: left;
+    line-height: 1.6;
+    color: #444;
+}
+
+.reading-content h2 {
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+

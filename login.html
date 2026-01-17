@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,12 @@
     <link rel="stylesheet" href="login.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="login-container">
         <h1 class="welcome-text">Welcome Back</h1>
 
-        <form class="login-form">
+        <form class="login-form" action="/teacher.html" >
             <div class="form-group">
                 <label for="email">Email Address</label>
                 <input type="email" id="email" placeholder="Enter your email address">
@@ -22,12 +24,20 @@
                 <input type="password" id="password" placeholder="Enter your password">
             </div>
 
-            <button type="submit" class="login-button">Log in</button>
+            <button id="login" type="submit" class="login-button">Log in</button>
         </form>
-        
+
         <div class="forgot-password-wrapper">
             <a href="#" class="forgot-password">Forgot your password?</a>
         </div>
     </div>
+
+    <script>
+
+        document.getElementById("loginBtn").addEventListener("click", function () {
+            window.location.href = "teacher.html";  
+        });
+    </script>
 </body>
+
 </html>
